@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Welcome</title>
+    <style>
+        .sidebar-nav {
+            background-color: cadetblue;
+            position: absolute;
+            top: 0;
+            left:0;
+            height:100%;
+            width: 10%;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .container {
+            /*position: absolute;*/
+            margin-left: 10%;
+            padding:0;
+            margin-top:5px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar-wrapper">
+        <h4>heello</h4>
+        <ul class='sidebar-nav'>
+            <li class='sidebar-brand'><a href="#special">Start</a></li>
+            <li><a href="#bigg">Dashboard</a></li>
+            <li><u>Home</u></li>
+            <li>HELLO!</li>
+        </ul>
+    </div>
+
+    <!--<div class="jumbotron">
+        <div class="container">
+            <div class="page-content-wrapper">
+                <div class="container-fluid">
+                    Hello Abhinav 
+                    <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
+                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+    <div class="jumbotron">
+            <h1>Hello Abhinav</h1>
+            <div class="container">
+                <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <button id="clear" class="btn btn-danger">Clear</button>
+                    <h2 class="text-center">CHAT</h2>
+                </div>
+                </div>
+            
+                <div class="row">
+                <div class="container">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-6">
+                            <div class="chat">
+                                <input type="text" id="user"
+                                    class="form-control" placeholder="Enter name.....">
+                                
+                                <br>
+                                <div class="card">
+                                    <div class="card-block scroll" id="msgs">
+    
+                                    </div>
+                                </div>
+                                <br>
+    
+                                <textarea id="mbox"
+                                    class="form-control" placeholder="message?"></textarea>
+    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+    
+                <div class="row d-flex justify-content-center">
+                <div class="col-6" id='boxx'>
+                   <div class="d-flex justify-content-end">
+                        <button id='exit' class='btn btn-primary'>Exit Chat-></button>
+                   </div>
+                </div>
+                </div>
+    
+            </div>
+            </div>
+    
+        </div>
+</body>
+</html>

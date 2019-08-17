@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome</title>
+    <style>
+        #msgs{
+            height:300px;
+            }
+
+        .scroll{
+            max-height:250px;
+            overflow-y: auto;
+        }
+
+        #boxx{
+            /*padding: 0%;*/
+            }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="jumbotron">
+        {{#if name}}
+            <h1>Hello {{name}}</h1>
+        {{else}}
+            <h1>Hello Anonymous</h1>
+        {{/if}}
+
+        <h4 id="port">{{port}}</h4>
+
+        <div class="container">
+
+            <div class="row">
+            <div class="col d-flex justify-content-center">
+                <button id="clear" class="btn btn-danger">Clear</button>
+                <h2 class="text-center">CHAT</h2>
+            </div>
+            </div>
+        
+            <div class="row">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-6">
+                        <div class="chat">
+                            
+                            <!--<form action="/" method="POST">-->
+
+                            <input type="text" id="user"
+                                class="form-control" placeholder="Enter name.....">
+                            
+                            <br>
+                            <div class="card">
+                                <div class="card-block scroll" id="msgs">
+
+                                </div>
+                            </div>
+                            <br>
+
+                            <textarea id="mbox"
+                                class="form-control" placeholder="message?"></textarea>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row d-flex justify-content-center">
+            <div class="col-6" id='boxx'>
+               <div class="d-flex justify-content-end">
+                    <button id='exit' class='btn btn-primary'>Exit Chat-></button>
+               </div>
+            </div>
+            </div>
+
+        </div>
+        </div>
+
+    </div>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <script src = "bcknd.js"></script>
+</body>
+</html>
