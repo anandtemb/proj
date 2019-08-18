@@ -2,6 +2,9 @@ const express = require('express')
 const app = express()
 const hbs = require('hbs')
 
+const server = require('http').createServer(app)
+const io = require('socket.io')(server)
+
 const { MongoClient } = require('mongodb')
 const client = new MongoClient('mongodb://localhost:27017',{ useNewUrlParser:true })
 
@@ -147,11 +150,75 @@ app.get('/chosey',(req,res)=>{
             name : curr_user,
             doc : msg[0].doc,
             docname : msg[0].name,
-            docdetail : msg[0].detail 
+            docdetail : msg[0].detail,
+            Name : `<button id='note' value='${curr_user}'>${curr_user}</button>`
         })
     })
     .catch((err)=>{
         console.log('ERROOR',err)
+    })
+})
+
+//<----------------------------------------------->//
+
+io.on('connection',(socket)=>{
+    console.log('connected')
+
+    socket.on('senddata',(data)=>{
+        console.log(data)
+
+        userp.then(db => {
+            const chats = db.collection('Chats')
+
+            const chatcursor = chats.find().sort({ _id:1 }).toArray()
+            chatcursor.then((ch)=>{
+                console.log(ch)
+                socket.emit('chata',ch)
+            }).catch(err => console.log(err))
+            
+        })
+    })
+
+    socket.on('newuser',(data)=>{
+        console.log("new ",data)
+        
+        userp.then(db => {
+            const chats = db.collection('Chats')
+            
+            console.log(data.name)
+            const cursor = chats.find({
+                name:data.name
+            }).toArray()
+            
+            cursor.then((arr)=>{
+                if(arr.length > 0)
+                {
+                    console.log(arr)
+                    console.log(arr[0]._id)
+                    //console.log(ObjectId(arr[0]._id).getTimestamp().toString())
+
+                    let date = arr[0]._id.getTimestamp()
+                    console.log(date)
+
+                    let date2 = new Date( parseInt(arr[0]._id.toString().substring(0,8)))
+                    console.log(date2)
+                }
+            })
+
+            console.log(cursor)
+
+            chats.insertOne({
+                name:data.name,
+                chat:data.chat
+            }).then(()=>console.log('inserted',Date()))
+            .catch(err => console.log('ERROR'))
+        })
+        
+        socket.broadcast.emit('newmsg',data)
+    })
+
+    socket.on('clear',(data)=>{
+        console.log('clearing :')
     })
 })
 
@@ -222,6 +289,8 @@ const checkDb = (list,colls) =>{
     return truth
 }
 
-app.listen(8000,()=>{
+//<-------------------------------------------->//
+
+server.listen(8000,()=>{
     console.log('runninn on 8000')
 })

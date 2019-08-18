@@ -1,0 +1,24 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "description": "my chat test",
+  "main": "srvr.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhinavtembulkar/chattest.git"
+  },
+  "author": "abhi_temb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abhinavtembulkar/chattest/issues"
+  },
+  "homepage": "https://github.com/abhinavtembulkar/chattest#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "handlebars": "^4.1.2",
+    "socket.io": "^2.2.0"
+  }
+}
