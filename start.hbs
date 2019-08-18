@@ -69,6 +69,7 @@
             <h3>Hello 
                 {{#if name}}
                   {{name}} !
+                  {{{Name}}}
                 {{else}} 
                   Anonymous !
                 {{/if}}
@@ -88,7 +89,7 @@
         <div class="container">
             <div class="row">
                 <div class="col justify-content-center" id='webcam'>
-                    qq qq
+                    <h1> NO CAMERA TO BE USED ! </h1>
                 </div>
             </div>
             <div class="row">
@@ -123,6 +124,8 @@
             <p class="mb-1">&copy; 2019 DoctorApp</p>
         </footer>
 
-    </div>
+    </div> 
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <script src = "bcknd2.js"></script>
 </body>
 </html>
